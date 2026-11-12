@@ -9,10 +9,12 @@ The notebooks do not import or execute one another. Their contract is the conten
 
 - `train_original.csv`
 - `test_original.csv`
+- `train_engineered.csv`
+- `test_engineered.csv`
 - `test_rul.csv`
 - `dataset_metadata.json`
 
-Shared saving, loading, and validation logic lives in `src/aeris/data_io.py` so it is not duplicated across notebooks.
+Shared loading and validation logic lives in `src/aeris/data_io.py` so Notebook 2 does not repeat Notebook 1's preparation checks.
 
 ## Install
 
@@ -42,3 +44,10 @@ AERIS/
 ## Execution order
 
 Run Notebook 1 once to generate the processed artifacts. Then run Notebook 2. Notebook 2 should never depend on variables left in Notebook 1's memory.
+
+By default, the notebooks use `data/` in the project root and `/content/data` on Google Colab. To use another location, set `AERIS_DATA_DIR` before running the data setup cell:
+
+```python
+import os
+os.environ["AERIS_DATA_DIR"] = "/path/to/aeris-data"
+```
