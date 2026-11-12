@@ -5,6 +5,8 @@ AERIS is organized as one project with two independent notebooks:
 1. `01_fd001_eda_feature_engineering.ipynb` prepares and exports the data.
 2. `02_random_forest_training_evaluation.ipynb` loads those exports, trains the model, and evaluates it.
 
+Notebook 1 downloads the public C-MAPSS archive from the [NASA Prognostics Center of Excellence dataset repository](https://www.nasa.gov/intelligent-systems-division/discovery-and-systems-health/pcoe/pcoe-data-set-repository/) and extracts only the FD001 files.
+
 The notebooks do not import or execute one another. Their contract is the content of `data/processed/`:
 
 - `train_original.csv`
@@ -51,3 +53,5 @@ By default, the notebooks use `data/` in the project root and `/content/data` on
 import os
 os.environ["AERIS_DATA_DIR"] = "/path/to/aeris-data"
 ```
+
+Notebook 2 writes the reusable model to `models/` and its CV, holdout, NASA test, and feature-importance tables to `reports/`.

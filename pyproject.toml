@@ -8,7 +8,6 @@ version = "0.1.0"
 description = "NASA FD001 remaining-useful-life analysis and modeling project"
 requires-python = ">=3.10"
 dependencies = [
-    "gdown",
     "joblib",
     "matplotlib",
     "numpy",
