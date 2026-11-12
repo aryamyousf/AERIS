@@ -18,6 +18,8 @@ The notebooks do not import or execute one another. Their contract is the conten
 
 Shared loading and validation logic lives in `src/aeris/data_io.py` so Notebook 2 does not repeat Notebook 1's preparation checks.
 
+When Notebook 2 is opened by itself in Colab, it falls back to an embedded loader. Notebook 1 must still be run first in the same Colab runtime so that `/content/data/processed` exists.
+
 ## Install
 
 From the project root, install the shared package and dependencies:
