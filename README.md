@@ -18,7 +18,7 @@ The notebooks do not import or execute one another. Their contract is the conten
 
 Shared loading and validation logic lives in `src/aeris/data_io.py` so Notebook 2 does not repeat Notebook 1's preparation checks.
 
-When Notebook 2 is opened by itself in Colab, it falls back to an embedded loader. Notebook 1 must still be run first in the same Colab runtime so that `/content/data/processed` exists.
+When running in Colab, both notebooks mount Google Drive and use `MyDrive/AERIS/data`. Run Notebook 1 once to create the processed files; Notebook 2 can then read them from a separate Colab runtime. Outside Colab, data remains under the project-local `data/` directory.
 
 ## Install
 
@@ -49,7 +49,7 @@ AERIS/
 
 Run Notebook 1 once to generate the processed artifacts. Then run Notebook 2. Notebook 2 should never depend on variables left in Notebook 1's memory.
 
-By default, the notebooks use `data/` in the project root and `/content/data` on Google Colab. To use another location, set `AERIS_DATA_DIR` before running the data setup cell:
+By default, the notebooks use `data/` in the project root and `MyDrive/AERIS/data` on Google Colab. To use another location, set `AERIS_DATA_DIR` before running the data setup cell:
 
 ```python
 import os
